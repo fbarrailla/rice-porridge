@@ -251,6 +251,47 @@ h3 { font-size: var(--fs-h3); line-height: 1.15; letter-spacing: -0.012em; }
   align-items: center;
   gap: var(--space-4);
 }
+
+/* language toggle — two pill-letters separated by a dot */
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+}
+.lang-toggle .lang-opt {
+  padding: 0.25rem 0;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  position: relative;
+  transition: color 0.25s var(--ease-out-quart);
+  cursor: pointer;
+  letter-spacing: inherit;
+  font: inherit;
+}
+.lang-toggle .lang-opt:hover { color: var(--ink); }
+.lang-toggle .lang-opt.active {
+  color: var(--ink);
+}
+.lang-toggle .lang-opt.active::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 1px;
+  background: var(--clay);
+  animation: lang-underline 0.4s var(--ease-out-expo);
+}
+@keyframes lang-underline {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+.lang-sep {
+  color: var(--rule);
+  font-size: 0.65rem;
+}
 .cart-btn {
   display: inline-flex;
   align-items: center;

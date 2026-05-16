@@ -8,6 +8,13 @@
 <link rel="stylesheet" href="styles.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<script>
+  // Set lang attribute before paint to avoid FOUC on language switch
+  try {
+    var l = localStorage.getItem('bsi.lang.v1');
+    if (l) document.documentElement.lang = l;
+  } catch (e) {}
+</script>
 </head>
 <body>
 
@@ -17,24 +24,20 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
 
-  <!-- decorative ornament: wavy divider -->
   <symbol id="orn-wave" viewBox="0 0 240 16">
     <path d="M2 8 Q 22 -2, 42 8 T 82 8 T 122 8 T 162 8 T 202 8 T 242 8"
           fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
   </symbol>
 
-  <!-- ornament: leaf -->
   <symbol id="orn-leaf" viewBox="0 0 40 40">
     <path d="M20 4 C 30 10, 34 22, 22 36 C 10 26, 10 12, 20 4 Z" fill="currentColor"/>
     <path d="M20 8 L 22 32" stroke="oklch(96% 0.018 80)" stroke-width="0.9"/>
   </symbol>
 
-  <!-- ornament: drop -->
   <symbol id="orn-drop" viewBox="0 0 24 32">
     <path d="M12 2 C 20 14, 22 22, 12 30 C 2 22, 4 14, 12 2 Z" fill="currentColor"/>
   </symbol>
 
-  <!-- stamp / seal -->
   <symbol id="stamp-seal" viewBox="0 0 120 120">
     <defs>
       <path id="circ" d="M 60,60 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" />
@@ -53,7 +56,6 @@
     </g>
   </symbol>
 
-  <!-- icons -->
   <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
     <path d="M3 4 L5 4 L7 16 L19 16 L21 8 L7 8" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="9" cy="20" r="1.4" fill="currentColor" stroke="none"/>
@@ -84,43 +86,30 @@
     <path d="M13 5 Q 15 7 13 9" stroke-linecap="round"/>
   </symbol>
 
-  <!-- ════════════ BOWLS ════════════ -->
-
-  <!-- Bowl: Klasik (cream porridge, palm sugar drizzle) -->
+  <!-- Bowl: Klasik -->
   <symbol id="bowl-klasik" viewBox="0 0 400 400">
-    <!-- saucer/placemat -->
     <circle cx="200" cy="210" r="184" fill="oklch(78% 0.045 60)" opacity="0.18"/>
     <circle cx="200" cy="210" r="184" fill="none" stroke="oklch(40% 0.05 50)" stroke-width="0.8" stroke-dasharray="2 4"/>
-    <!-- outer bowl rim -->
     <circle cx="200" cy="210" r="160" fill="oklch(38% 0.045 50)"/>
     <circle cx="200" cy="210" r="148" fill="oklch(94% 0.018 80)"/>
-    <!-- porridge (cream) -->
     <circle cx="200" cy="210" r="132" fill="oklch(91% 0.025 78)"/>
-    <!-- subtle inner shadow ring -->
     <circle cx="200" cy="210" r="132" fill="none" stroke="oklch(85% 0.035 70)" stroke-width="2" opacity="0.6"/>
-    <!-- palm sugar drizzle (kinca) -->
     <g fill="oklch(45% 0.13 38)">
       <path d="M 165 175 Q 200 145, 240 175 Q 270 205, 235 240 Q 200 270, 165 235 Q 138 200, 165 175 Z" opacity="0.92"/>
       <path d="M 170 180 Q 200 158, 232 180 Q 252 205, 230 232 Q 200 254, 175 232 Q 152 205, 170 180 Z" fill="oklch(55% 0.135 35)"/>
     </g>
-    <!-- drizzle highlight -->
     <path d="M 180 185 Q 200 175, 218 185" stroke="oklch(70% 0.1 50)" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7"/>
-    <!-- coconut milk swirl -->
     <path d="M 110 250 Q 140 240, 165 248" stroke="oklch(96% 0.012 80)" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.85"/>
     <path d="M 240 252 Q 270 244, 295 254" stroke="oklch(96% 0.012 80)" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.85"/>
-    <!-- pandan leaf -->
     <path d="M 235 110 Q 270 100, 290 135 Q 260 145, 235 110 Z" fill="oklch(45% 0.075 140)"/>
     <path d="M 240 118 L 282 132" stroke="oklch(32% 0.06 140)" stroke-width="1"/>
-    <!-- texture flecks -->
     <g fill="oklch(82% 0.04 70)" opacity="0.5">
-      <circle cx="155" cy="225" r="1.5"/>
-      <circle cx="160" cy="195" r="1.2"/>
-      <circle cx="245" cy="200" r="1.3"/>
-      <circle cx="240" cy="225" r="1.1"/>
+      <circle cx="155" cy="225" r="1.5"/><circle cx="160" cy="195" r="1.2"/>
+      <circle cx="245" cy="200" r="1.3"/><circle cx="240" cy="225" r="1.1"/>
     </g>
   </symbol>
 
-  <!-- Bowl: Pandan (green) -->
+  <!-- Bowl: Pandan -->
   <symbol id="bowl-pandan" viewBox="0 0 400 400">
     <circle cx="200" cy="210" r="184" fill="oklch(78% 0.045 140)" opacity="0.18"/>
     <circle cx="200" cy="210" r="184" fill="none" stroke="oklch(35% 0.06 140)" stroke-width="0.8" stroke-dasharray="2 4"/>
@@ -128,78 +117,58 @@
     <circle cx="200" cy="210" r="148" fill="oklch(94% 0.018 80)"/>
     <circle cx="200" cy="210" r="132" fill="oklch(78% 0.085 140)"/>
     <circle cx="200" cy="210" r="132" fill="none" stroke="oklch(65% 0.085 140)" stroke-width="2" opacity="0.5"/>
-    <!-- coconut on top -->
     <circle cx="200" cy="210" r="62" fill="oklch(96% 0.014 80)" opacity="0.9"/>
-    <!-- palm sugar drizzle on coconut -->
     <path d="M 175 200 Q 200 175, 225 200 Q 230 220, 220 235 Q 200 245, 180 235 Q 170 220, 175 200 Z" fill="oklch(48% 0.13 38)"/>
-    <!-- pandan leaves on side -->
     <path d="M 90 180 Q 60 195, 50 230 Q 80 220, 92 195 Z" fill="oklch(40% 0.085 140)"/>
     <path d="M 75 190 L 65 222" stroke="oklch(28% 0.06 140)" stroke-width="1"/>
     <path d="M 310 180 Q 340 195, 350 230 Q 320 220, 308 195 Z" fill="oklch(40% 0.085 140)"/>
     <path d="M 325 190 L 335 222" stroke="oklch(28% 0.06 140)" stroke-width="1"/>
-    <!-- speckles -->
     <g fill="oklch(60% 0.075 140)" opacity="0.45">
-      <circle cx="150" cy="195" r="1.6"/>
-      <circle cx="145" cy="230" r="1.4"/>
-      <circle cx="255" cy="200" r="1.5"/>
-      <circle cx="250" cy="232" r="1.3"/>
+      <circle cx="150" cy="195" r="1.6"/><circle cx="145" cy="230" r="1.4"/>
+      <circle cx="255" cy="200" r="1.5"/><circle cx="250" cy="232" r="1.3"/>
       <circle cx="200" cy="160" r="1.4"/>
     </g>
   </symbol>
 
-  <!-- Bowl: Ketan Hitam (black sticky rice topping) -->
+  <!-- Bowl: Ketan Hitam -->
   <symbol id="bowl-ketan" viewBox="0 0 400 400">
     <circle cx="200" cy="210" r="184" fill="oklch(78% 0.04 60)" opacity="0.18"/>
     <circle cx="200" cy="210" r="184" fill="none" stroke="oklch(35% 0.04 50)" stroke-width="0.8" stroke-dasharray="2 4"/>
     <circle cx="200" cy="210" r="160" fill="oklch(34% 0.04 45)"/>
     <circle cx="200" cy="210" r="148" fill="oklch(94% 0.018 80)"/>
-    <!-- cream porridge base -->
     <circle cx="200" cy="210" r="132" fill="oklch(91% 0.025 78)"/>
-    <!-- ketan hitam mound (deep purple/black) -->
     <ellipse cx="200" cy="195" rx="78" ry="60" fill="oklch(28% 0.04 25)"/>
     <ellipse cx="200" cy="190" rx="72" ry="54" fill="oklch(32% 0.05 25)"/>
-    <!-- speckled grains -->
     <g fill="oklch(20% 0.04 25)">
-      <circle cx="170" cy="180" r="2.2"/>
-      <circle cx="190" cy="170" r="2"/>
-      <circle cx="215" cy="175" r="2.3"/>
-      <circle cx="225" cy="195" r="2"/>
-      <circle cx="190" cy="210" r="2.3"/>
-      <circle cx="170" cy="205" r="2"/>
+      <circle cx="170" cy="180" r="2.2"/><circle cx="190" cy="170" r="2"/>
+      <circle cx="215" cy="175" r="2.3"/><circle cx="225" cy="195" r="2"/>
+      <circle cx="190" cy="210" r="2.3"/><circle cx="170" cy="205" r="2"/>
       <circle cx="210" cy="220" r="2"/>
     </g>
-    <!-- highlight grains (lighter) -->
     <g fill="oklch(50% 0.06 30)" opacity="0.7">
-      <circle cx="178" cy="195" r="1.5"/>
-      <circle cx="205" cy="200" r="1.4"/>
-      <circle cx="195" cy="186" r="1.4"/>
-      <circle cx="220" cy="208" r="1.4"/>
+      <circle cx="178" cy="195" r="1.5"/><circle cx="205" cy="200" r="1.4"/>
+      <circle cx="195" cy="186" r="1.4"/><circle cx="220" cy="208" r="1.4"/>
     </g>
-    <!-- coconut drizzle -->
     <path d="M 110 245 Q 145 232, 170 240 Q 200 250, 230 240 Q 260 232, 295 248" stroke="oklch(96% 0.014 80)" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.85"/>
-    <!-- palm sugar drips -->
     <g fill="oklch(48% 0.13 38)" opacity="0.85">
       <path d="M 145 165 Q 155 160, 160 175 Q 152 178, 145 165 Z"/>
       <path d="M 240 165 Q 250 160, 255 175 Q 247 178, 240 165 Z"/>
     </g>
   </symbol>
 
-  <!-- Bowl: Durian (yellow with durian) -->
+  <!-- Bowl: Durian -->
   <symbol id="bowl-durian" viewBox="0 0 400 400">
     <circle cx="200" cy="210" r="184" fill="oklch(78% 0.06 95)" opacity="0.2"/>
     <circle cx="200" cy="210" r="184" fill="none" stroke="oklch(35% 0.08 80)" stroke-width="0.8" stroke-dasharray="2 4"/>
     <circle cx="200" cy="210" r="160" fill="oklch(32% 0.06 70)"/>
     <circle cx="200" cy="210" r="148" fill="oklch(94% 0.018 80)"/>
-    <!-- cream porridge -->
     <circle cx="200" cy="210" r="132" fill="oklch(91% 0.025 78)"/>
-    <!-- durian sauce (yellow swirl) -->
     <g fill="oklch(82% 0.13 95)">
       <path d="M 150 165 Q 195 150, 245 170 Q 270 200, 250 245 Q 200 270, 155 250 Q 130 210, 150 165 Z"/>
     </g>
     <g fill="oklch(75% 0.135 90)">
       <path d="M 160 175 Q 200 162, 240 180 Q 258 205, 240 240 Q 200 258, 165 240 Q 145 205, 160 175 Z"/>
     </g>
-    <!-- durian segments (cream-yellow petals) -->
     <g fill="oklch(97% 0.04 95)" stroke="oklch(60% 0.13 80)" stroke-width="1.2">
       <ellipse cx="200" cy="175" rx="16" ry="26" />
       <ellipse cx="172" cy="200" rx="16" ry="26" transform="rotate(-50 172 200)"/>
@@ -212,65 +181,49 @@
       <ellipse cx="228" cy="200" rx="2.5" ry="6" transform="rotate(50 228 200)"/>
       <ellipse cx="200" cy="235" rx="2.5" ry="6"/>
     </g>
-    <!-- coconut drizzle -->
     <path d="M 115 255 Q 145 240, 175 248" stroke="oklch(96% 0.014 80)" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.9"/>
     <path d="M 225 248 Q 255 240, 285 255" stroke="oklch(96% 0.014 80)" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.9"/>
   </symbol>
 
-  <!-- Bowl: Candil (sweet potato dumplings in palm sugar) -->
+  <!-- Bowl: Candil -->
   <symbol id="bowl-candil" viewBox="0 0 400 400">
     <circle cx="200" cy="210" r="184" fill="oklch(80% 0.05 30)" opacity="0.18"/>
     <circle cx="200" cy="210" r="184" fill="none" stroke="oklch(35% 0.06 35)" stroke-width="0.8" stroke-dasharray="2 4"/>
     <circle cx="200" cy="210" r="160" fill="oklch(32% 0.05 35)"/>
     <circle cx="200" cy="210" r="148" fill="oklch(94% 0.018 80)"/>
-    <!-- palm sugar broth -->
     <circle cx="200" cy="210" r="132" fill="oklch(58% 0.13 35)"/>
     <circle cx="200" cy="210" r="132" fill="none" stroke="oklch(48% 0.13 35)" stroke-width="2" opacity="0.6"/>
-    <!-- candil dumplings (sweet potato — orange) -->
     <g>
-      <circle cx="160" cy="180" r="14" fill="oklch(62% 0.135 50)"/>
-      <circle cx="158" cy="178" r="4" fill="oklch(75% 0.1 60)" opacity="0.6"/>
-      <circle cx="200" cy="165" r="16" fill="oklch(62% 0.135 50)"/>
-      <circle cx="198" cy="163" r="5" fill="oklch(75% 0.1 60)" opacity="0.6"/>
-      <circle cx="240" cy="180" r="13" fill="oklch(62% 0.135 50)"/>
-      <circle cx="238" cy="178" r="4" fill="oklch(75% 0.1 60)" opacity="0.6"/>
-      <circle cx="170" cy="225" r="15" fill="oklch(62% 0.135 50)"/>
-      <circle cx="168" cy="223" r="4" fill="oklch(75% 0.1 60)" opacity="0.6"/>
-      <circle cx="215" cy="220" r="14" fill="oklch(62% 0.135 50)"/>
-      <circle cx="213" cy="218" r="4" fill="oklch(75% 0.1 60)" opacity="0.6"/>
-      <circle cx="245" cy="240" r="12" fill="oklch(62% 0.135 50)"/>
-      <circle cx="243" cy="238" r="4" fill="oklch(75% 0.1 60)" opacity="0.6"/>
-      <circle cx="180" cy="260" r="13" fill="oklch(62% 0.135 50)"/>
-      <circle cx="178" cy="258" r="4" fill="oklch(75% 0.1 60)" opacity="0.6"/>
+      <circle cx="160" cy="180" r="14" fill="oklch(62% 0.135 50)"/><circle cx="158" cy="178" r="4" fill="oklch(75% 0.1 60)" opacity="0.6"/>
+      <circle cx="200" cy="165" r="16" fill="oklch(62% 0.135 50)"/><circle cx="198" cy="163" r="5" fill="oklch(75% 0.1 60)" opacity="0.6"/>
+      <circle cx="240" cy="180" r="13" fill="oklch(62% 0.135 50)"/><circle cx="238" cy="178" r="4" fill="oklch(75% 0.1 60)" opacity="0.6"/>
+      <circle cx="170" cy="225" r="15" fill="oklch(62% 0.135 50)"/><circle cx="168" cy="223" r="4" fill="oklch(75% 0.1 60)" opacity="0.6"/>
+      <circle cx="215" cy="220" r="14" fill="oklch(62% 0.135 50)"/><circle cx="213" cy="218" r="4" fill="oklch(75% 0.1 60)" opacity="0.6"/>
+      <circle cx="245" cy="240" r="12" fill="oklch(62% 0.135 50)"/><circle cx="243" cy="238" r="4" fill="oklch(75% 0.1 60)" opacity="0.6"/>
+      <circle cx="180" cy="260" r="13" fill="oklch(62% 0.135 50)"/><circle cx="178" cy="258" r="4" fill="oklch(75% 0.1 60)" opacity="0.6"/>
     </g>
-    <!-- coconut swirl -->
     <path d="M 120 200 Q 100 230, 130 260" stroke="oklch(96% 0.014 80)" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.85"/>
     <path d="M 290 200 Q 305 230, 280 260" stroke="oklch(96% 0.014 80)" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.85"/>
   </symbol>
 
-  <!-- Bowl: Paket Keluarga (large family pot illustration) -->
+  <!-- Bowl: Paket Keluarga -->
   <symbol id="bowl-family" viewBox="0 0 400 400">
     <circle cx="200" cy="210" r="184" fill="oklch(78% 0.045 50)" opacity="0.18"/>
     <circle cx="200" cy="210" r="184" fill="none" stroke="oklch(38% 0.05 45)" stroke-width="0.8" stroke-dasharray="2 4"/>
-    <!-- four mini bowls in 2x2 grid -->
     <g>
-      <!-- top-left: klasik -->
       <circle cx="135" cy="145" r="58" fill="oklch(38% 0.045 50)"/>
       <circle cx="135" cy="145" r="52" fill="oklch(94% 0.018 80)"/>
       <circle cx="135" cy="145" r="44" fill="oklch(91% 0.025 78)"/>
       <circle cx="135" cy="145" r="18" fill="oklch(48% 0.13 38)"/>
-      <!-- top-right: pandan -->
       <circle cx="265" cy="145" r="58" fill="oklch(28% 0.04 140)"/>
       <circle cx="265" cy="145" r="52" fill="oklch(94% 0.018 80)"/>
       <circle cx="265" cy="145" r="44" fill="oklch(78% 0.085 140)"/>
       <circle cx="265" cy="145" r="18" fill="oklch(96% 0.014 80)"/>
-      <!-- bottom-left: durian -->
       <circle cx="135" cy="275" r="58" fill="oklch(32% 0.06 70)"/>
       <circle cx="135" cy="275" r="52" fill="oklch(94% 0.018 80)"/>
       <circle cx="135" cy="275" r="44" fill="oklch(91% 0.025 78)"/>
       <circle cx="135" cy="275" r="24" fill="oklch(82% 0.13 95)"/>
       <circle cx="135" cy="275" r="10" fill="oklch(95% 0.06 95)"/>
-      <!-- bottom-right: candil -->
       <circle cx="265" cy="275" r="58" fill="oklch(32% 0.05 35)"/>
       <circle cx="265" cy="275" r="52" fill="oklch(94% 0.018 80)"/>
       <circle cx="265" cy="275" r="44" fill="oklch(58% 0.13 35)"/>
@@ -278,7 +231,6 @@
       <circle cx="276" cy="270" r="6" fill="oklch(62% 0.135 50)"/>
       <circle cx="265" cy="285" r="6" fill="oklch(62% 0.135 50)"/>
     </g>
-    <!-- center ornament -->
     <g transform="translate(200 210)">
       <circle r="20" fill="oklch(54% 0.13 38)"/>
       <text y="5" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="14" fill="oklch(96% 0.018 80)">4</text>
@@ -294,18 +246,23 @@
 <header class="site-header" id="siteHeader">
   <div class="page header-row">
     <nav class="nav-primary" aria-label="primary">
-      <a href="#/shop" data-nav="shop">Menu</a>
-      <a href="#/story" data-nav="story">Cerita</a>
-      <a href="#/contact" data-nav="contact">Kontak</a>
+      <a href="#/shop" data-nav="shop" data-i18n="nav.menu">Menu</a>
+      <a href="#/story" data-nav="story" data-i18n="nav.story">Cerita</a>
+      <a href="#/contact" data-nav="contact" data-i18n="nav.contact">Kontak</a>
     </nav>
-    <a href="#/" class="brand" aria-label="Bubur Sumsum Ibu — beranda">
+    <a href="#/" class="brand" data-i18n-aria-label="brand.aria" aria-label="Bubur Sumsum Ibu — beranda">
       <span class="b-mark">Bubur Sumsum</span>
       <span class="b-sub">— ibu —</span>
     </a>
     <div class="nav-actions">
-      <button class="cart-btn" id="openCart" aria-label="Buka keranjang">
+      <div class="lang-toggle" role="group" data-i18n-aria-label="lang.aria" aria-label="pilih bahasa">
+        <button class="lang-opt" data-lang="id" type="button">ID</button>
+        <span class="lang-sep" aria-hidden="true">·</span>
+        <button class="lang-opt" data-lang="en" type="button">EN</button>
+      </div>
+      <button class="cart-btn" id="openCart" data-i18n-aria-label="cart.aria.open" aria-label="Buka keranjang">
         <svg width="16" height="16"><use href="#i-cart"/></svg>
-        <span>Keranjang</span>
+        <span data-i18n="cart.label">Keranjang</span>
         <span class="cart-count" id="cartCount">0</span>
       </button>
     </div>
@@ -325,20 +282,20 @@
     <div class="hero-grid">
       <div class="hero-text">
         <div class="hero-meta">
-          <span class="eyebrow">Vol. 1 — Resep Ibu</span>
-          <span class="folio">est. Bandung, 2018</span>
+          <span class="eyebrow" data-i18n="hero.eyebrow">Vol. 1 — Resep Ibu</span>
+          <span class="folio" data-i18n="hero.est">est. Bandung, 2018</span>
         </div>
-        <h1 class="display">
+        <h1 class="display" data-i18n-html="hero.title.html">
           Lembut,<br/>
           manis, <span class="italic">selalu</span><br/>
           <span class="italic">hangat</span> <span class="ampersand">&amp;</span> baru.
         </h1>
-        <p class="hero-lede drop-cap">
+        <p class="hero-lede drop-cap" data-i18n="hero.lede">
           Sejak lima tahun lalu Ibu bangun pukul empat pagi untuk menanak bubur sumsum dari tepung beras pilihan, gula merah Kebumen, dan santan kelapa segar. Kami hanya melanjutkan apa yang sudah ada — dengan ojek, dengan cinta.
         </p>
         <div class="hero-cta-row">
-          <a href="#/shop" class="btn">Pesan Sekarang <svg width="16" height="16" class="arrow"><use href="#i-arrow"/></svg></a>
-          <a href="#/story" class="btn-text">Baca ceritanya</a>
+          <a href="#/shop" class="btn"><span data-i18n="hero.cta.order">Pesan Sekarang</span> <svg width="16" height="16" class="arrow"><use href="#i-arrow"/></svg></a>
+          <a href="#/story" class="btn-text" data-i18n="hero.cta.story">Baca ceritanya</a>
         </div>
       </div>
 
@@ -350,9 +307,9 @@
           <svg viewBox="0 0 400 400"><use href="#bowl-klasik"/></svg>
         </div>
         <div class="hero-floats">
-          <span style="top: 12%; left: -2%;">tepung beras pilihan</span>
-          <span style="bottom: 22%; right: -4%;">kuah gula Kebumen</span>
-          <span style="bottom: 6%; left: 8%;">santan kelapa segar</span>
+          <span style="top: 12%; left: -2%;" data-i18n="hero.float.1">tepung beras pilihan</span>
+          <span style="bottom: 22%; right: -4%;" data-i18n="hero.float.2">kuah gula Kebumen</span>
+          <span style="bottom: 6%; left: 8%;" data-i18n="hero.float.3">santan kelapa segar</span>
         </div>
       </div>
     </div>
@@ -361,25 +318,25 @@
   <!-- MARQUEE -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span>Dibuat segar setiap pagi</span><span class="dot"></span>
-      <span>Diantar masih hangat</span><span class="dot"></span>
-      <span>Tanpa pengawet</span><span class="dot"></span>
-      <span>Gula merah asli Kebumen</span><span class="dot"></span>
-      <span>Santan kelapa segar</span><span class="dot"></span>
-      <span>Dibuat segar setiap pagi</span><span class="dot"></span>
-      <span>Diantar masih hangat</span><span class="dot"></span>
-      <span>Tanpa pengawet</span><span class="dot"></span>
-      <span>Gula merah asli Kebumen</span><span class="dot"></span>
-      <span>Santan kelapa segar</span><span class="dot"></span>
+      <span data-i18n="marquee.1">Dibuat segar setiap pagi</span><span class="dot"></span>
+      <span data-i18n="marquee.2">Diantar masih hangat</span><span class="dot"></span>
+      <span data-i18n="marquee.3">Tanpa pengawet</span><span class="dot"></span>
+      <span data-i18n="marquee.4">Gula merah asli Kebumen</span><span class="dot"></span>
+      <span data-i18n="marquee.5">Santan kelapa segar</span><span class="dot"></span>
+      <span data-i18n="marquee.1">Dibuat segar setiap pagi</span><span class="dot"></span>
+      <span data-i18n="marquee.2">Diantar masih hangat</span><span class="dot"></span>
+      <span data-i18n="marquee.3">Tanpa pengawet</span><span class="dot"></span>
+      <span data-i18n="marquee.4">Gula merah asli Kebumen</span><span class="dot"></span>
+      <span data-i18n="marquee.5">Santan kelapa segar</span><span class="dot"></span>
     </div>
   </div>
 
-  <!-- HERITAGE / STORY PANEL -->
+  <!-- HERITAGE -->
   <section class="heritage spread">
     <div class="page heritage-grid">
       <div class="heritage-lead reveal">
-        <span class="eyebrow eyebrow-clay">№ 01 — Asal Mula</span>
-        <h2 style="margin-top: 1rem;">
+        <span class="eyebrow eyebrow-clay" data-i18n="heritage.eyebrow">№ 01 — Asal Mula</span>
+        <h2 style="margin-top: 1rem;" data-i18n-html="heritage.h2.html">
           Bubur yang <span class="underline">mengingatkan</span> kita pada rumah.
         </h2>
         <div style="margin-top: 2rem; color: var(--clay);">
@@ -387,19 +344,19 @@
         </div>
       </div>
       <div class="heritage-body reveal delay-2">
-        <p class="drop-cap">
+        <p class="drop-cap" data-i18n="heritage.p1">
           Setiap mangkuk dimulai sebelum matahari terbit. Tepung beras yang sudah direndam semalaman, santan dari kelapa yang baru diparut, gula merah pekat yang dimasak perlahan dengan daun pandan — semua dikerjakan tangan, sebagaimana nenek dulu mengajari.
         </p>
-        <p>
+        <p data-i18n="heritage.p2">
           Tidak ada jalan pintas. Tidak ada pengawet. Tidak ada rahasia selain kesabaran. Bubur sumsum yang baik harus lembut tetapi punya tubuh, manis tetapi tidak menusuk, hangat sampai ke dada.
         </p>
-        <p>
+        <p data-i18n="heritage.p3">
           Itu sebabnya kami antarkan hari yang sama — supaya rasanya sampai ke meja Anda persis seperti waktu pertama kali dituang dari panci.
         </p>
         <div class="heritage-footnote">
-          <div class="heritage-signature">— Ibu Ning</div>
-          <div class="caption">
-            Pendiri & juru masak,<br/>
+          <div class="heritage-signature" data-i18n="heritage.sig">— Ibu Ning</div>
+          <div class="caption" data-i18n-html="heritage.foot.html">
+            Pendiri &amp; juru masak,<br/>
             sejak 14 Mei 2018.
           </div>
         </div>
@@ -410,26 +367,24 @@
   <!-- MENU -->
   <section class="page spread" id="menu">
     <div class="section-head">
-      <span class="eyebrow eyebrow-clay reveal">№ 02 — Menu</span>
-      <h2 class="reveal delay-1" style="font-style: italic; font-weight: 300;">
+      <span class="eyebrow eyebrow-clay reveal" data-i18n="menu.eyebrow">№ 02 — Menu</span>
+      <h2 class="reveal delay-1" style="font-style: italic; font-weight: 300;" data-i18n-html="menu.h2.html">
         Enam <span class="serif-italic" style="color: var(--clay);">varian</span>, satu kesabaran.
       </h2>
-      <a href="#/shop" class="btn-text reveal delay-2">Lihat semua</a>
+      <a href="#/shop" class="btn-text reveal delay-2" data-i18n="menu.seeall">Lihat semua</a>
     </div>
 
-    <div class="menu-grid" id="featuredGrid">
-      <!-- products injected by JS -->
-    </div>
+    <div class="menu-grid" id="featuredGrid"></div>
   </section>
 
   <!-- RITUAL -->
   <section class="page ritual">
     <div class="section-head">
-      <span class="eyebrow eyebrow-clay">№ 03 — Cara Menyajikan</span>
-      <h2 style="font-style: italic; font-weight: 300;">
+      <span class="eyebrow eyebrow-clay" data-i18n="ritual.eyebrow">№ 03 — Cara Menyajikan</span>
+      <h2 style="font-style: italic; font-weight: 300;" data-i18n-html="ritual.h2.html">
         Ritual <span class="serif-italic" style="color: var(--clay);">tiga langkah</span> sederhana.
       </h2>
-      <span class="caption">untuk dinikmati segera.</span>
+      <span class="caption" data-i18n="ritual.caption">untuk dinikmati segera.</span>
     </div>
 
     <div class="ritual-grid">
@@ -437,22 +392,22 @@
         <div class="step-illus" data-step="i" style="color: var(--clay);">
           <svg><use href="#i-bowl"/></svg>
         </div>
-        <h3>Tuang ke mangkuk</h3>
-        <p>Pindahkan bubur ke mangkuk keramik favorit Anda. Jangan tergesa.</p>
+        <h3 data-i18n="ritual.1.title">Tuang ke mangkuk</h3>
+        <p data-i18n="ritual.1.desc">Pindahkan bubur ke mangkuk keramik favorit Anda. Jangan tergesa.</p>
       </div>
       <div class="ritual-step reveal delay-1">
         <div class="step-illus" data-step="ii" style="color: var(--clay);">
           <svg><use href="#i-thermo"/></svg>
         </div>
-        <h3>Hangatkan sebentar</h3>
-        <p>Jika dingin, panaskan 60 detik di atas api kecil — sambil aduk perlahan supaya santan menyatu kembali.</p>
+        <h3 data-i18n="ritual.2.title">Hangatkan sebentar</h3>
+        <p data-i18n="ritual.2.desc">Jika dingin, panaskan 60 detik di atas api kecil — sambil aduk perlahan supaya santan menyatu kembali.</p>
       </div>
       <div class="ritual-step reveal delay-2">
         <div class="step-illus" data-step="iii" style="color: var(--clay);">
           <svg><use href="#i-spoon"/></svg>
         </div>
-        <h3>Siram kuah gula</h3>
-        <p>Tuang kuah gula merah hingga membentuk genangan kecil, lalu siram santan. Nikmati sebelum dingin.</p>
+        <h3 data-i18n="ritual.3.title">Siram kuah gula</h3>
+        <p data-i18n="ritual.3.desc">Tuang kuah gula merah hingga membentuk genangan kecil, lalu siram santan. Nikmati sebelum dingin.</p>
       </div>
     </div>
   </section>
@@ -461,24 +416,24 @@
   <section class="voices">
     <div class="page">
       <div class="section-head">
-        <span class="eyebrow eyebrow-clay">№ 04 — Suara Pelanggan</span>
-        <h2 style="color: var(--coconut); font-style: italic; font-weight: 300;">
+        <span class="eyebrow eyebrow-clay" data-i18n="voices.eyebrow">№ 04 — Suara Pelanggan</span>
+        <h2 style="color: var(--coconut); font-style: italic; font-weight: 300;" data-i18n-html="voices.h2.html">
           Yang mereka <span style="color: var(--clay-pale);">rasakan</span>.
         </h2>
-        <span class="caption" style="color: var(--clay-pale);">dari ratusan pesanan setiap minggu.</span>
+        <span class="caption" style="color: var(--clay-pale);" data-i18n="voices.caption">dari ratusan pesanan setiap minggu.</span>
       </div>
 
       <div class="voices-list">
         <div class="voice reveal">
-          <blockquote>Persis seperti yang dibuat almarhumah nenek saya di Solo. Saya menangis di gigitan pertama.</blockquote>
+          <blockquote data-i18n="voices.1.quote">Persis seperti yang dibuat almarhumah nenek saya di Solo. Saya menangis di gigitan pertama.</blockquote>
           <div class="who">Maya P. <span class="star">★★★★★</span></div>
         </div>
         <div class="voice reveal delay-1">
-          <blockquote>Sampai masih hangat, kuah gulanya pekat, santannya tidak amis. Sempurna untuk sarapan akhir pekan.</blockquote>
+          <blockquote data-i18n="voices.2.quote">Sampai masih hangat, kuah gulanya pekat, santannya tidak amis. Sempurna untuk sarapan akhir pekan.</blockquote>
           <div class="who">Reza S. <span class="star">★★★★★</span></div>
         </div>
         <div class="voice reveal delay-2">
-          <blockquote>Saya pesan paket keluarga setiap Sabtu pagi. Anak-anak sudah menunggu di depan pintu.</blockquote>
+          <blockquote data-i18n="voices.3.quote">Saya pesan paket keluarga setiap Sabtu pagi. Anak-anak sudah menunggu di depan pintu.</blockquote>
           <div class="who">Devi A. <span class="star">★★★★★</span></div>
         </div>
       </div>
@@ -492,24 +447,22 @@
   <div class="page">
     <div class="shop-head">
       <div>
-        <span class="eyebrow eyebrow-clay">Vol. II — Menu Lengkap</span>
-        <h1 style="margin-top: 1rem;">
+        <span class="eyebrow eyebrow-clay" data-i18n="shop.eyebrow">Vol. II — Menu Lengkap</span>
+        <h1 style="margin-top: 1rem;" data-i18n-html="shop.h1.html">
           Semua bubur, <span class="roman">diantar hangat</span>.
         </h1>
       </div>
-      <div class="shop-filters" role="tablist" aria-label="filter varian">
-        <button class="filter-chip active" data-filter="all">Semua</button>
-        <button class="filter-chip" data-filter="klasik">Klasik</button>
-        <button class="filter-chip" data-filter="modern">Modern</button>
-        <button class="filter-chip" data-filter="paket">Paket</button>
+      <div class="shop-filters" role="tablist" data-i18n-aria-label="shop.filters.aria" aria-label="filter varian">
+        <button class="filter-chip active" data-filter="all" data-i18n="shop.filter.all">Semua</button>
+        <button class="filter-chip" data-filter="klasik" data-i18n="shop.filter.klasik">Klasik</button>
+        <button class="filter-chip" data-filter="modern" data-i18n="shop.filter.modern">Modern</button>
+        <button class="filter-chip" data-filter="paket" data-i18n="shop.filter.paket">Paket</button>
       </div>
     </div>
 
     <hr class="rule" />
 
-    <div class="menu-grid" id="shopGrid" style="margin-top: 3rem; margin-bottom: 6rem;">
-      <!-- products injected -->
-    </div>
+    <div class="menu-grid" id="shopGrid" style="margin-top: 3rem; margin-bottom: 6rem;"></div>
   </div>
 </section>
 
@@ -517,12 +470,10 @@
 <section data-view="product" hidden>
   <div class="page">
     <div style="padding: 2rem 0 0; display: flex; gap: 0.5rem; align-items: center;">
-      <a href="#/shop" class="caption">← Kembali ke menu</a>
+      <a href="#/shop" class="caption" data-i18n="pd.back">← Kembali ke menu</a>
     </div>
     <div class="product-detail">
-      <div class="pd-grid" id="pdGrid">
-        <!-- injected -->
-      </div>
+      <div class="pd-grid" id="pdGrid"></div>
     </div>
   </div>
 </section>
@@ -531,92 +482,92 @@
 <section data-view="checkout" hidden>
   <div class="page">
     <div style="padding: 2rem 0 0;">
-      <a href="#/" class="caption">← Lanjut belanja</a>
+      <a href="#/" class="caption" data-i18n="co.back">← Lanjut belanja</a>
     </div>
 
     <div class="checkout">
       <form id="checkoutForm" novalidate>
-        <h1>Pesanan <span class="it">Anda</span></h1>
+        <h1 data-i18n-html="co.h1.html">Pesanan <span class="it">Anda</span></h1>
 
         <fieldset class="fieldset">
-          <legend><span class="num">1</span><h3>Pengiriman</h3></legend>
+          <legend><span class="num">1</span><h3 data-i18n="co.step.1">Pengiriman</h3></legend>
           <div class="delivery-options" id="deliveryOpts">
             <label class="checked" data-delivery="instant" data-price="15000">
               <div class="opt-head">
-                <span class="opt-name">Antar Hari Ini</span>
+                <span class="opt-name" data-i18n="co.delivery.instant.name">Antar Hari Ini</span>
                 <span class="opt-price">Rp 15.000</span>
               </div>
-              <span class="opt-meta">Tiba dalam 90 menit · Bandung kota</span>
+              <span class="opt-meta" data-i18n="co.delivery.instant.meta">Tiba dalam 90 menit · Bandung kota</span>
             </label>
             <label data-delivery="scheduled" data-price="10000">
               <div class="opt-head">
-                <span class="opt-name">Jadwal Besok Pagi</span>
+                <span class="opt-name" data-i18n="co.delivery.scheduled.name">Jadwal Besok Pagi</span>
                 <span class="opt-price">Rp 10.000</span>
               </div>
-              <span class="opt-meta">Tiba pukul 07:00 — segar dari panci</span>
+              <span class="opt-meta" data-i18n="co.delivery.scheduled.meta">Tiba pukul 07:00 — segar dari panci</span>
             </label>
           </div>
         </fieldset>
 
         <fieldset class="fieldset">
-          <legend><span class="num">2</span><h3>Detail kontak</h3></legend>
+          <legend><span class="num">2</span><h3 data-i18n="co.step.2">Detail kontak</h3></legend>
           <div class="field-grid cols-2">
             <div class="field">
-              <label for="f-name">Nama lengkap</label>
+              <label for="f-name" data-i18n="co.field.name">Nama lengkap</label>
               <input id="f-name" name="name" required />
             </div>
             <div class="field">
-              <label for="f-phone">Nomor WhatsApp</label>
+              <label for="f-phone" data-i18n="co.field.phone">Nomor WhatsApp</label>
               <input id="f-phone" name="phone" type="tel" required />
             </div>
           </div>
           <div class="field-grid" style="margin-top: 1.25rem;">
             <div class="field">
-              <label for="f-addr">Alamat pengiriman</label>
-              <textarea id="f-addr" name="address" required placeholder="Jl. Cihampelas no. 56, Bandung 40131"></textarea>
+              <label for="f-addr" data-i18n="co.field.addr">Alamat pengiriman</label>
+              <textarea id="f-addr" name="address" required data-i18n-placeholder="co.field.addr.ph" placeholder="Jl. Cihampelas no. 56, Bandung 40131"></textarea>
             </div>
             <div class="field">
-              <label for="f-note">Catatan untuk dapur (opsional)</label>
-              <input id="f-note" name="note" placeholder="Misal: tanpa daun pandan, atau ekstra kuah" />
+              <label for="f-note" data-i18n="co.field.note">Catatan untuk dapur (opsional)</label>
+              <input id="f-note" name="note" data-i18n-placeholder="co.field.note.ph" placeholder="Misal: tanpa daun pandan, atau ekstra kuah" />
             </div>
           </div>
         </fieldset>
 
         <fieldset class="fieldset">
-          <legend><span class="num">3</span><h3>Pembayaran</h3></legend>
+          <legend><span class="num">3</span><h3 data-i18n="co.step.3">Pembayaran</h3></legend>
           <div class="payment-card">
             <div class="field">
-              <label for="f-card">Nomor kartu</label>
+              <label for="f-card" data-i18n="co.field.card">Nomor kartu</label>
               <input id="f-card" name="card" placeholder="•••• •••• •••• ••••" required inputmode="numeric" />
             </div>
             <div class="cc-row">
               <div class="field">
-                <label for="f-holder">Nama di kartu</label>
+                <label for="f-holder" data-i18n="co.field.holder">Nama di kartu</label>
                 <input id="f-holder" name="holder" required />
               </div>
               <div class="field">
-                <label for="f-exp">Kadaluwarsa</label>
+                <label for="f-exp" data-i18n="co.field.exp">Kadaluwarsa</label>
                 <input id="f-exp" name="exp" placeholder="MM/YY" required />
               </div>
               <div class="field">
-                <label for="f-cvc">CVC</label>
+                <label for="f-cvc" data-i18n="co.field.cvc">CVC</label>
                 <input id="f-cvc" name="cvc" placeholder="•••" required inputmode="numeric" />
               </div>
             </div>
           </div>
-          <p class="caption" style="margin-top: 0.8rem;">Atau bayar tunai saat pesanan tiba — pilih opsi di atas.</p>
+          <p class="caption" style="margin-top: 0.8rem;" data-i18n="co.pay.cash">Atau bayar tunai saat pesanan tiba — pilih opsi di atas.</p>
         </fieldset>
 
         <button type="submit" class="btn btn-clay" style="margin-top: 2rem; width: 100%; justify-content: center;">
-          Konfirmasi Pesanan <svg width="16" height="16" class="arrow"><use href="#i-arrow"/></svg>
+          <span data-i18n="co.submit">Konfirmasi Pesanan</span> <svg width="16" height="16" class="arrow"><use href="#i-arrow"/></svg>
         </button>
       </form>
 
-      <aside class="checkout-summary" aria-label="ringkasan pesanan">
-        <h3>Ringkasan</h3>
+      <aside class="checkout-summary" data-i18n-aria-label="co.summary.aria" aria-label="ringkasan pesanan">
+        <h3 data-i18n="co.summary">Ringkasan</h3>
         <div class="cs-items" id="csItems"></div>
         <div class="cs-totals" id="csTotals"></div>
-        <p class="caption" style="margin-top: 1rem; text-align: center;">Bubur dimasak setelah pesanan dikonfirmasi.</p>
+        <p class="caption" style="margin-top: 1rem; text-align: center;" data-i18n="co.summary.note">Bubur dimasak setelah pesanan dikonfirmasi.</p>
       </aside>
     </div>
   </div>
@@ -629,13 +580,13 @@
       <div class="ill" style="color: var(--clay)">
         <svg viewBox="0 0 120 120"><use href="#stamp-seal"/></svg>
       </div>
-      <span class="eyebrow eyebrow-clay">Terima kasih</span>
-      <h1 style="margin-top: 1rem;">Pesanan <span class="it">tercatat</span>.</h1>
-      <p>Ibu akan mulai memasak segera. Anda akan menerima pesan WhatsApp begitu kurir berangkat.</p>
+      <span class="eyebrow eyebrow-clay" data-i18n="cf.eyebrow">Terima kasih</span>
+      <h1 style="margin-top: 1rem;" data-i18n-html="cf.h1.html">Pesanan <span class="it">tercatat</span>.</h1>
+      <p data-i18n="cf.body">Ibu akan mulai memasak segera. Anda akan menerima pesan WhatsApp begitu kurir berangkat.</p>
       <div class="order-num" id="orderNum">№ BSI-000000</div>
       <div style="display:flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href="#/" class="btn">Kembali ke beranda <svg width="16" height="16" class="arrow"><use href="#i-arrow"/></svg></a>
-        <a href="#/shop" class="btn-ghost btn">Pesan lagi</a>
+        <a href="#/" class="btn"><span data-i18n="cf.cta.home">Kembali ke beranda</span> <svg width="16" height="16" class="arrow"><use href="#i-arrow"/></svg></a>
+        <a href="#/shop" class="btn-ghost btn" data-i18n="cf.cta.again">Pesan lagi</a>
       </div>
     </div>
   </div>
@@ -650,26 +601,26 @@
   <div class="page footer-grid">
     <div class="footer-brand">
       <div class="b-mark">Bubur Sumsum<br/><em>— ibu —</em></div>
-      <p>Resep warisan keluarga, dibuat segar setiap pagi di dapur kami di Bandung.</p>
+      <p data-i18n="footer.tagline">Resep warisan keluarga, dibuat segar setiap pagi di dapur kami di Bandung.</p>
     </div>
     <div>
-      <h4>Menu</h4>
+      <h4 data-i18n="footer.menu.title">Menu</h4>
       <ul>
-        <li><a href="#/shop">Semua varian</a></li>
-        <li><a href="#/shop">Paket keluarga</a></li>
-        <li><a href="#/shop">Hadiah & hampers</a></li>
+        <li><a href="#/shop" data-i18n="footer.menu.1">Semua varian</a></li>
+        <li><a href="#/shop" data-i18n="footer.menu.2">Paket keluarga</a></li>
+        <li><a href="#/shop" data-i18n="footer.menu.3">Hadiah & hampers</a></li>
       </ul>
     </div>
     <div>
-      <h4>Cerita</h4>
+      <h4 data-i18n="footer.story.title">Cerita</h4>
       <ul>
-        <li><a href="#/story">Tentang Ibu Ning</a></li>
-        <li><a href="#/story">Bahan baku</a></li>
-        <li><a href="#/story">Jurnal dapur</a></li>
+        <li><a href="#/story" data-i18n="footer.story.1">Tentang Ibu Ning</a></li>
+        <li><a href="#/story" data-i18n="footer.story.2">Bahan baku</a></li>
+        <li><a href="#/story" data-i18n="footer.story.3">Jurnal dapur</a></li>
       </ul>
     </div>
     <div>
-      <h4>Hubungi</h4>
+      <h4 data-i18n="footer.contact.title">Hubungi</h4>
       <ul>
         <li><a href="#">WhatsApp +62 812-3456-789</a></li>
         <li><a href="#">@bubursumsumibu</a></li>
@@ -678,8 +629,8 @@
     </div>
   </div>
   <div class="page footer-bottom">
-    <span>© 2026 Bubur Sumsum Ibu · Bandung, Indonesia</span>
-    <span><em>Made with kesabaran.</em></span>
+    <span data-i18n="footer.copyright">© 2026 Bubur Sumsum Ibu · Bandung, Indonesia</span>
+    <span data-i18n-html="footer.signoff.html"><em>Made with kesabaran.</em></span>
   </div>
 </footer>
 
@@ -687,10 +638,10 @@
      CART DRAWER
      ══════════════════════════════════════════════════════════════ -->
 <div class="cart-overlay" id="cartOverlay"></div>
-<aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-label="keranjang belanja">
+<aside class="cart-drawer" id="cartDrawer" aria-hidden="true" data-i18n-aria-label="cart.aria" aria-label="keranjang belanja">
   <div class="cart-head">
-    <h3>Keranjang</h3>
-    <button class="cart-close" id="closeCart" aria-label="Tutup keranjang">
+    <h3 data-i18n="cart.title">Keranjang</h3>
+    <button class="cart-close" id="closeCart" data-i18n-aria-label="cart.aria.close" aria-label="Tutup keranjang">
       <svg width="20" height="20"><use href="#i-close"/></svg>
     </button>
   </div>
@@ -698,9 +649,9 @@
   <div class="cart-foot" id="cartFoot" hidden>
     <div class="cart-totals" id="cartTotals"></div>
     <a href="#/checkout" class="btn btn-clay" id="checkoutBtn">
-      Lanjut ke Pembayaran <svg width="16" height="16" class="arrow"><use href="#i-arrow"/></svg>
+      <span data-i18n="cart.checkout">Lanjut ke Pembayaran</span> <svg width="16" height="16" class="arrow"><use href="#i-arrow"/></svg>
     </a>
-    <div class="cart-note">Antar dalam 90 menit · Bandung kota</div>
+    <div class="cart-note" data-i18n="cart.note">Antar dalam 90 menit · Bandung kota</div>
   </div>
 </aside>
 
