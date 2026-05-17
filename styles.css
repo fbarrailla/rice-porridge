@@ -582,6 +582,68 @@ section.spread.thin { padding: var(--space-6) 0; }
   transform: rotate(-3deg);
 }
 
+/* ── field note (documentary kitchen photo) ─────────────────── */
+.field-note {
+  padding: var(--space-7) 0 var(--space-6);
+}
+.field-note-figure {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+@media (min-width: 880px) {
+  .field-note-figure { grid-template-columns: 6fr 5fr; gap: var(--space-7); }
+}
+.field-note-frame {
+  position: relative;
+  background: var(--coconut);
+  padding: clamp(0.75rem, 1.6vw, 1.4rem);
+  box-shadow:
+    0 1px 0 var(--rule-soft),
+    0 22px 50px oklch(30% 0.04 50 / 0.16);
+  transform: rotate(-1.2deg);
+  transition: transform 0.6s var(--ease-out-quart);
+  isolation: isolate;
+}
+.field-note-frame:hover { transform: rotate(0); }
+.field-note-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3.4;
+  object-fit: cover;
+  filter: saturate(0.78) contrast(0.96) sepia(0.06);
+}
+.field-note-tape {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-4deg);
+  width: 96px;
+  height: 22px;
+  background: oklch(82% 0.05 80 / 0.55);
+  border: 1px dashed oklch(60% 0.04 60 / 0.4);
+  z-index: 2;
+}
+.field-note-cap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 46ch;
+}
+.field-note-cap h3 {
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.1;
+}
+.field-note-cap p {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
 /* ── menu / product grid ─────────────────────────────────────── */
 .menu-grid {
   display: grid;

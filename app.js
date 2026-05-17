@@ -65,6 +65,11 @@ const STRINGS = {
     'voices.eyebrow': '№ 04 — Suara Pelanggan',
     'voices.h2.html': 'Yang mereka <span style="color: var(--clay-pale);">rasakan</span>.',
     'voices.caption': 'dari ratusan pesanan setiap minggu.',
+    // ─ field note
+    'field.eyebrow': 'Catatan Dapur — Jumat',
+    'field.h.html': 'Ratusan porsi, <span class="serif-italic" style="color: var(--clay);">satu pagi</span>.',
+    'field.body': 'Setiap Jumat pagi, dapur kami mengemas ratusan porsi bubur sumsum untuk pesanan Jumat berkah — diantar ke panti asuhan, masjid, dan pesantren yang dipilih oleh pelanggan kami. Foto ini diambil sebelum kurir berangkat.',
+
     'voices.1.quote': 'Persis seperti yang dibuat almarhumah nenek saya di Solo. Saya menangis di gigitan pertama.',
     'voices.2.quote': 'Sampai masih hangat, kuah gulanya pekat, santannya tidak amis. Sempurna untuk sarapan akhir pekan.',
     'voices.3.quote': 'Saya pesan paket keluarga setiap Sabtu pagi. Anak-anak sudah menunggu di depan pintu.',
@@ -223,6 +228,10 @@ const STRINGS = {
     'voices.eyebrow': '№ 04 — Customer Voices',
     'voices.h2.html': 'What they <span style="color: var(--clay-pale);">feel</span>.',
     'voices.caption': 'from hundreds of orders every week.',
+    'field.eyebrow': 'Kitchen Note — Friday',
+    'field.h.html': 'Hundreds of servings, <span class="serif-italic" style="color: var(--clay);">one morning</span>.',
+    'field.body': 'Every Friday morning, our kitchen packs hundreds of servings of bubur sumsum for Jumat berkah charity orders — delivered to orphanages, mosques, and Islamic boarding schools chosen by our customers. This photo was taken just before the couriers set out.',
+
     'voices.1.quote': 'Exactly like the one my late grandmother used to make in Solo. I cried at the first bite.',
     'voices.2.quote': 'Arrived warm, the syrup thick, the coconut milk impeccable. Perfect for a weekend breakfast.',
     'voices.3.quote': 'I order the family pack every Saturday morning. The kids are already waiting by the door.',
